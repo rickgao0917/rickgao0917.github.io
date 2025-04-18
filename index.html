@@ -3,36 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+    <title>Hello World</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            overflow: hidden;
+        }
+        
+        .container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            position: relative;
+            z-index: 2;
         }
-        .container {
+        
+        .text-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem 4rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             text-align: center;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
         }
+        
+        .text-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
         h1 {
+            font-size: 3rem;
+            margin: 0;
             color: #333;
+            letter-spacing: -1px;
         }
-        p {
-            color: #666;
+        
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(125deg, #65dfc9, #6cdbeb, #7ea9e7);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        .shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 8s infinite;
+        }
+        
+        .shape:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            left: 10%;
+            top: 20%;
+            background: rgba(149, 175, 255, 0.4);
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            right: 15%;
+            top: 30%;
+            background: rgba(255, 171, 207, 0.4);
+            animation-delay: 2s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 120px;
+            height: 120px;
+            left: 25%;
+            bottom: 20%;
+            background: rgba(89, 234, 193, 0.4);
+            animation-delay: 4s;
+        }
+        
+        .shape:nth-child(4) {
+            width: 180px;
+            height: 180px;
+            right: 20%;
+            bottom: 25%;
+            background: rgba(235, 175, 235, 0.4);
+            animation-delay: 6s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .text-container {
+                padding: 1.5rem 2.5rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .shape {
+                opacity: 0.5;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .text-container {
+                padding: 1rem 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="background"></div>
+    <div class="shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
     <div class="container">
-        <h1>Hello, World!</h1>
-        <p>Welcome to my first website.</p>
+        <div class="text-container">
+            <h1>Hello World</h1>
+        </div>
     </div>
 </body>
 </html>
